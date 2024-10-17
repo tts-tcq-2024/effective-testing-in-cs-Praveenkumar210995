@@ -12,7 +12,7 @@ public class TshirtTestCases
     }
 
     [Fact]
-    public void InputBetween_38and40_ShouldReturn_S_Size() 
+    public void InputBetween_38and40_ShouldReturn_M_Size() 
     {
         int input = 40;
         string result = Tshirt.Size(input);
@@ -20,7 +20,7 @@ public class TshirtTestCases
     }
 
     [Fact]
-    public void Size_ShouldReturn_L_ForInputGreaterThan42() 
+    public void InputGreaterThan_42_ShouldReturn_L_Size() 
     {
         int input = 43;
         string result = Tshirt.Size(input);
@@ -28,27 +28,10 @@ public class TshirtTestCases
     }
 
     [Fact]
-    public void Size_ShouldHandleEdgeCaseOf38() 
+    public void HandleEdgeCaseofSize_38() 
     {
         int input = 38;
         string result = Tshirt.Size(input);
-        Assert.Equal("L", result);
-    }
-
-    [Fact]
-    public void Size_ShouldReturnM_ForBoundaryCase39() 
-    {
-        int input = 39;
-        string result = Tshirt.Size(input);
         Assert.Equal("M", result);
     }
-    
-    [Fact]
-    public void Size_ShouldReturnL_ForBoundaryCase42() 
-    {
-        int input = 42;
-        string result = Tshirt.Size(input);
-        Assert.Equal("L", result);
-    }
-
 }
