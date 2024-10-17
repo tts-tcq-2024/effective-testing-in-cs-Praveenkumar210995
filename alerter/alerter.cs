@@ -8,7 +8,7 @@ namespace AlerterSpace {
             // Return 200 for ok
             // Return 500 for not-ok
             // stub always succeeds and returns 200
-            return 200;
+            return 500;
         }
         static void alertInCelcius(float farenheit) {
             float celcius = (farenheit - 32) * 5 / 9;
@@ -21,9 +21,27 @@ namespace AlerterSpace {
                 alertFailureCount += 0;
             }
         }
+
+        static void RunTests()
+        {
+            alertFailureCount = 0; // Reset count before running tests
+
+            alertInCelsius(400.5f); 
+            alertInCelsius(303.6f); 
+            if (alertFailureCount == 2)
+            {
+                Console.WriteLine("Test Passed: {0} alerts failed as expected.", alertFailureCount);
+            }
+            else
+            {
+                Console.WriteLine("Test Failed: Expected 2 alerts to fail, but got {0}.", alertFailureCount);
+            }
+        }
+
         static void Main(string[] args) {
             alertInCelcius(400.5f);
             alertInCelcius(303.6f);
+            RunTests();
             Console.WriteLine("{0} alerts failed.", alertFailureCount);
             Console.WriteLine("All is well (maybe!)\n");
         }
